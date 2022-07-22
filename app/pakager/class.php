@@ -169,7 +169,19 @@ unlink('./modules/'.$pakagename.'.zip');
   
   
 }
-
+  static function install($pakagename)
+  {
+    $url = "https://accessapi.cf/pakage/" . $pakagename . ".zip";
+    $file = fopen($url, 'r');
+    $content = stream_get_contents($file);
+    fclose($file);
+    $file = fopen($pakagename . ".zip", 'w');
+    fwrite($file, $content, "./paked");
+    fclose($file);
+  
+  
+  }
+   
 
 
 }

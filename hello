@@ -9,6 +9,7 @@ use IsaEken\Spinner\Spinner;
 use IsaEken\Spinner\Themes\ClassicTheme;
 use \App\Database\Migrate;
 use App\Pakager\Pakager;
+use \App\Database\Config;
 
 $argv = $_SERVER["argv"];
 
@@ -54,6 +55,17 @@ if ($argv[1] == "add") {
     $adder = Pakager::add($argv[2]);
    
 }
+
+if ($argv[1] == "install") {
+    $adder = Pakager::install($argv[2]);
+   
+}
+
+if ($argv[1] == "dbtest")  {
+    
+    Config::connect("test");
+}
+
 
 }else {
     echo(json_encode($endpoints, JSON_PRETTY_PRINT)); 

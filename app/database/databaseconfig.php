@@ -3,9 +3,9 @@ namespace App\Database;
 
 class Config
 {
-    static function connect(){
-        $host = "getenv('DATABASE HOST')";
-        $user = "getenv('DATABASE USER')";
+    static function connect($test = false){
+        $host = getenv('DATABASE HOST');
+        $user = getenv('DATABASE USER');
         $pass = getenv("DATABSE PASSWORD");
         $db = getenv("DATABASE NAME");
 
@@ -16,6 +16,9 @@ class Config
             # code...
         } else {
             echo ("Connection failed");
+        }
+        if ($test) {
+            echo "Connected successfully";
         }
         return $con;
     }
