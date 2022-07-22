@@ -1,0 +1,68 @@
+#!C:\php\php.exe -q
+<?php
+session_start();
+include "./load.php";
+
+use \App\Create\Table;
+use IsaEken\Spinner\Enums\Status;
+use IsaEken\Spinner\Spinner;
+use IsaEken\Spinner\Themes\ClassicTheme;
+use \App\Database\Migrate;
+use App\Pakager\Pakager;
+
+$argv = $_SERVER["argv"];
+
+
+if (isset($argv[1])) {
+    
+if ($argv[1] == "create") {
+  
+    if (isset($argv[2])) {
+      
+       if ($argv[2] == "table") {
+        
+        if(isset($argv[3])) {
+        Table::create($argv[3]);
+
+       }else {
+        echo "Please enter a table name";
+       }
+    }else {
+        echo "Please the method of creation";
+    }
+}
+}
+
+
+if ($argv[1] == "migrate") {
+    
+  Migrate::migrate();
+
+}
+
+if ($argv[1] == "init") {
+    
+Pakager::init();
+
+
+}elseif ($argv[1] == "quickinit") {
+        Pakager::quickinit();
+}
+
+
+if ($argv[1] == "add") {
+    $adder = Pakager::add($argv[2]);
+   
+}
+
+}else {
+    echo(json_encode($endpoints, JSON_PRETTY_PRINT)); 
+}
+
+
+
+
+
+
+
+ ?>

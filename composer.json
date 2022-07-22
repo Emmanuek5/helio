@@ -1,0 +1,5 @@
+{
+    "require": {
+        "isaeken/spinner": "^1.4"
+    }
+}
