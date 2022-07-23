@@ -85,11 +85,11 @@ $name = $pakagedata['name'];
 
 
   static function add($pakagename){
- include './vendor/autoload.php';
-    $rootPath = realpath('./modules/'.$pakagename);
-
-
-    if (file_exists("./modules/" . $pakagename)) {
+     include './vendor/autoload.php';
+     
+     
+     $rootPath = realpath('./modules/'.$pakagename);
+if (file_exists("./modules/" . $pakagename)) {
     // Initialize archive object
     $zip = new \ZipArchive();
     $zip->open('./modules/'.$pakagename.".zip", \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
