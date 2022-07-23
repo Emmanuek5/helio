@@ -171,14 +171,33 @@ unlink('./modules/'.$pakagename.'.zip');
 }
   static function install($pakagename)
   {
-    $url = "https://accessapi.cf/pakage/" . $pakagename . ".zip";
+    $result = \IsaEken\Spinner\Spinner::run(function () {
+      \IsaEken\Spinner\Spinner::setTitle('Calculating...');
+ sleep(3) ;
+      \IsaEken\Spinner\Spinner::setTitle('Waiting...');
+      sleep(1);
+      \IsaEken\Spinner\Spinner::setTitle('Downloading....');
+      sleep(5);
+      \IsaEken\Spinner\Spinner::setTitle('Done!');
+    });
+
+    $url = "http://localhost/pakage/" . $pakagename . ".zip";
     $file = fopen($url, 'r');
     $content = stream_get_contents($file);
     fclose($file);
     $file = fopen($pakagename . ".zip", 'w');
-    fwrite($file, $content, "./paked");
+    fwrite($file, $content);
     fclose($file);
-  
+    $zip = new \ZipArchive;
+    $res = $zip->open("./".$pakagename.'.zip');
+    if ($res === TRUE) {
+      $zip->extractTo('./modules/'.$pakagename);
+      $zip->close();
+
+      unlink('./' . $pakagename . '.zip');
+    } else {
+      echo "\e[0;41mPakage Was not Uploaded Please Check Your Internet And Try Again .\e[0m\n";
+    }
   
   }
    

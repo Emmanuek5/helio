@@ -8,4 +8,5 @@ include_once './app/database/table.php';
 include_once './app/server/parse.php';
 include_once './.envloader.php';
 include_once './app/pakager/class.php';
+include_once './app/server/class.php';
 include_once './vendor/autoload.php';

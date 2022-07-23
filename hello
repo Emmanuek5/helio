@@ -66,6 +66,10 @@ if ($argv[1] == "dbtest")  {
     Config::connect("test");
 }
 
+if ($argv[1] == "login"){
+    
+}
+
 
 }else {
     echo(json_encode($endpoints, JSON_PRETTY_PRINT)); 
